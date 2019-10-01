@@ -38,12 +38,15 @@
 
             <TextView
                 android:id="@+id/details_tv_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:maxLines="2"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/text_title_size"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/details_iv_poster"
                 app:layout_constraintTop_toTopOf="@+id/details_iv_poster"
                 tools:text="@string/endgame_title" />
@@ -62,12 +65,15 @@
 
             <TextView
                 android:id="@+id/details_tv_released_date"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:lines="1"
                 app:layout_constraintBaseline_toBaselineOf="@+id/details_tv_released"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/details_tv_released"
                 tools:text="@string/endgame_release_date" />
 

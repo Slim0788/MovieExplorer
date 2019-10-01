@@ -1,6 +1,6 @@
-package com.itt_us.biletyplus.exercise2.data;
+package com.android.academy.academy_minsk_movie.data;
 
-import com.itt_us.biletyplus.exercise2.R;
+import com.android.academy.academy_minsk_movie.R;
 
 import java.util.ArrayList;
 import java.util.List;

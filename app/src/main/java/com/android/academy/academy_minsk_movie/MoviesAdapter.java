@@ -1,4 +1,4 @@
-package com.itt_us.biletyplus.exercise2;
+package com.android.academy.academy_minsk_movie;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,17 +9,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.academy.academy_minsk_movie.data.DataStorage;
+import com.android.academy.academy_minsk_movie.data.Movie;
 import com.bumptech.glide.Glide;
-import com.itt_us.biletyplus.exercise2.data.DataStorage;
-import com.itt_us.biletyplus.exercise2.data.Movie;
 
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
 
+    private final OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
     private List<Movie> listOfItems;
 
-    MoviesAdapter() {
+    MoviesAdapter(OnItemClickListener listener) {
+        this.listener = listener;
         listOfItems = DataStorage.getInstance().getMovieList();
     }
 
@@ -63,6 +70,18 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             poster = itemView.findViewById(R.id.movies_item_iv_poster);
             title = itemView.findViewById(R.id.movies_item_tv_title);
             overview = itemView.findViewById(R.id.movies_item_tv_overview_text);
+
+            itemView.setOnClickListener(view -> listener.onItemClick(getAdapterPosition()));
+//            setListeners();
+        }
+
+        private void setListeners() {
+            if (listener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    itemView.setOnClickListener(view -> listener.onItemClick(position));
+                }
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.itt_us.biletyplus.exercise2;
+package com.android.academy.academy_minsk_movie;
 
 import org.junit.Test;
 

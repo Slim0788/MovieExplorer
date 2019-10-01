@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.itt_us.biletyplus.exercise2">
+    package="com.android.academy.academy_minsk_movie">
 
     <application
         android:allowBackup="false"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MoviesActivity">
+        <activity android:name="com.android.academy.academy_minsk_movie.MoviesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailsActivity"
+            android:name="com.android.academy.academy_minsk_movie.DetailsActivity"
             android:label="Details" />
     </application>
 </manifest>

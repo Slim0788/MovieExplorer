@@ -9,6 +9,9 @@
     <string name="button_movie_trailer">Movie Trailer</string>
     <string name="overview_title">Overview:</string>
 
+    <string name="exit_alert_title">Really Exit?</string>
+    <string name="exit_alert_message">Are you sure you want to exit?</string>
+
     <string name="content_description_movie_backdrop">Movie Backdrop</string>
     <string name="content_description_movie_poster">Movie Poster</string>
 </resources>
