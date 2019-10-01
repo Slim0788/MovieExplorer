@@ -16,8 +16,8 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
-        setTitle("Academy Minsk Movies");
+        setContentView(R.layout.activity_movies_recycler_view_item);
+//        setTitle("Academy Minsk Movies");
 
         movieTrailerButton = findViewById(R.id.details_btn_trailer);
 
