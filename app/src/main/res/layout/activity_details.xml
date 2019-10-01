@@ -9,12 +9,12 @@
     tools:context=".DetailsActivity">
 
     <ImageView
-        android:id="@+id/details_iv_back"
+        android:id="@+id/details_iv_backdrop"
         android:layout_width="match_parent"
         android:layout_height="@dimen/back_image_size"
         android:contentDescription="@string/content_description_movie_backdrop"
         android:scaleType="centerCrop"
-        android:src="@drawable/avengers_endgame_big" />
+        tools:src="@drawable/avengers_endgame_big" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,19 +34,19 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/avengers_endgame" />
+                tools:src="@drawable/avengers_endgame" />
 
             <TextView
                 android:id="@+id/details_tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/endgame_title"
-                android:textColor="@color/purple"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/text_title_size"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/details_iv_poster"
-                app:layout_constraintTop_toTopOf="@+id/details_iv_poster" />
+                app:layout_constraintTop_toTopOf="@+id/details_iv_poster"
+                tools:text="@string/endgame_title" />
 
             <TextView
                 android:id="@+id/details_tv_released"
@@ -65,14 +65,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/endgame_release_date"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/details_tv_released"
-                app:layout_constraintStart_toEndOf="@+id/details_tv_released" />
+                app:layout_constraintStart_toEndOf="@+id/details_tv_released"
+                tools:text="@string/endgame_release_date" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/details_btn_trailer"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -100,13 +101,13 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/endgame_overview"
                 android:textColor="@color/grey"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/details_tv_overview"
-                app:layout_constraintTop_toBottomOf="@+id/details_tv_overview" />
+                app:layout_constraintTop_toBottomOf="@+id/details_tv_overview"
+                tools:text="@string/endgame_overview" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

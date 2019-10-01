@@ -9,10 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.itt_us.biletyplus.exercise2.data.DataStorage;
 import com.itt_us.biletyplus.exercise2.data.Movie;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
@@ -31,9 +31,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
         View view = inflater.inflate(R.layout.activity_movies_recycler_view_item, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(view);
-
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -41,12 +39,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
         Movie movie = listOfItems.get(position);
 
-        holder.overview.setText(movie.getTitle());
-        holder.title.setText(movie.getOverview());
-
-//        Glide.with(holder.poster)
-//                .load("main_image")
-//                .into(holder.poster);
+        holder.title.setText(movie.getTitle());
+        holder.overview.setText(movie.getOverview());
+        Glide.with(holder.poster)
+                .load(movie.getPosterRes())
+                .into(holder.poster);
     }
 
     @Override

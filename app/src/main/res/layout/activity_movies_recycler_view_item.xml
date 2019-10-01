@@ -5,10 +5,9 @@
     style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     app:cardCornerRadius="7dp"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="8dp">
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -49,6 +48,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
+            android:maxLines="3"
             app:layout_constraintBottom_toBottomOf="@+id/movies_item_iv_poster"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/movies_item_iv_poster"
