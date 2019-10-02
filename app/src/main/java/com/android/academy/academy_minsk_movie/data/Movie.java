@@ -1,12 +1,14 @@
 package com.android.academy.academy_minsk_movie.data;
 
+import androidx.annotation.DrawableRes;
+
 public class Movie {
 
     private String title;
     private String overview;
-//    @DrawableRes
+    @DrawableRes
     private int posterRes;
-//    @DrawableRes
+    @DrawableRes
     private int backdropRes;
     private String releaseDate;
     private String trailerUrl;
