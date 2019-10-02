@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
 
-    private final OnItemClickListener listener;
+    private final OnItemClickListener itemClickListener;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -25,8 +25,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     private List<Movie> listOfItems;
 
-    MoviesAdapter(OnItemClickListener listener) {
-        this.listener = listener;
+    MoviesAdapter(OnItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
         listOfItems = DataStorage.getInstance().getMovieList();
     }
 
@@ -71,17 +71,17 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             title = itemView.findViewById(R.id.movies_item_tv_title);
             overview = itemView.findViewById(R.id.movies_item_tv_overview_text);
 
-            itemView.setOnClickListener(view -> listener.onItemClick(getAdapterPosition()));
-//            setListeners();
+            setListeners();
         }
 
         private void setListeners() {
-            if (listener != null) {
+            itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    itemView.setOnClickListener(view -> listener.onItemClick(position));
+                if (itemClickListener != null && position != RecyclerView.NO_POSITION) {
+                    itemClickListener.onItemClick(getAdapterPosition());
                 }
-            }
+            });
         }
     }
 }
+

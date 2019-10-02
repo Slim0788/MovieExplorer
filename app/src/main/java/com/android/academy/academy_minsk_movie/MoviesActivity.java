@@ -21,6 +21,7 @@ public class MoviesActivity extends AppCompatActivity implements MoviesAdapter.O
         setContentView(R.layout.activity_movies);
 
         recyclerView = findViewById(R.id.movies_recycler_view);
+        recyclerView.setHasFixedSize(true);
 
         adapter = new MoviesAdapter(this);
         recyclerView.setAdapter(adapter);
