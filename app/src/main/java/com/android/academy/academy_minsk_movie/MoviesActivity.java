@@ -26,6 +26,7 @@ public class MoviesActivity extends AppCompatActivity implements MoviesAdapter.O
 
         adapter = new MoviesAdapter(this);
         recyclerView.setAdapter(adapter);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(R.layout.activity_movies_recycler_view_advertising, 1);
     }
 
     @Override
