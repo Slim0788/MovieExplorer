@@ -1,6 +1,7 @@
 package com.android.academy.academy_minsk_movie;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,9 +44,15 @@ public class MoviesActivity extends AppCompatActivity implements MoviesAdapter.O
     }
 
     private void showDetails(int position) {
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra(ITEM_POSITION, position);
-        startActivity(intent);
+        if (position == MoviesAdapter.ADVERTISING_POSITION) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.advertising_url))));
+//            Toast.makeText(getApplicationContext(), "Это левый элемент списка", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(this, DetailsActivity.class);
+            intent.putExtra(ITEM_POSITION, position);
+            startActivity(intent);
+        }
+
     }
 
 }

@@ -6,7 +6,7 @@
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/activity_movies"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -20,6 +20,6 @@
         </activity>
         <activity
             android:name="com.android.academy.academy_minsk_movie.DetailsActivity"
-            android:label="Details" />
+            android:label="@string/activity_details" />
     </application>
 </manifest>

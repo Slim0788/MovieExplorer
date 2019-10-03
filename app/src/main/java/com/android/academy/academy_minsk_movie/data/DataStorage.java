@@ -1,5 +1,6 @@
 package com.android.academy.academy_minsk_movie.data;
 
+import com.android.academy.academy_minsk_movie.MoviesAdapter;
 import com.android.academy.academy_minsk_movie.R;
 
 import java.util.ArrayList;
@@ -93,7 +94,7 @@ public class DataStorage {
                 "April 22, 2019",
                 "https://www.youtube.com/watch?v=6ZfuNTqbHE8"
         ));
-
+        list.add(MoviesAdapter.ADVERTISING_POSITION, list.get(MoviesAdapter.ADVERTISING_POSITION - 1));
         return list;
     }
 }

@@ -19,6 +19,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     private final OnItemClickListener itemClickListener;
 
+    public static final int ADVERTISING_POSITION = 3;
+
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
@@ -30,27 +32,39 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         listOfItems = DataStorage.getInstance().getMovieList();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-
-        View view = inflater.inflate(R.layout.activity_movies_recycler_view_item, parent, false);
-
-        return new ViewHolder(view);
+        switch (viewType) {
+            case ADVERTISING_POSITION:
+                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_advertising, parent, false));
+            default:
+                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_item, parent, false));
+        }
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Movie movie = listOfItems.get(position);
+        switch (holder.getItemViewType()) {
+            case ADVERTISING_POSITION:
 
-        holder.title.setText(movie.getTitle());
-        holder.overview.setText(movie.getOverview());
-        Glide.with(holder.poster)
-                .load(movie.getPosterRes())
-                .into(holder.poster);
+                break;
+            default:
+                Movie movie = listOfItems.get(position);
+
+                holder.title.setText(movie.getTitle());
+                holder.overview.setText(movie.getOverview());
+                Glide.with(holder.poster)
+                        .load(movie.getPosterRes())
+                        .into(holder.poster);
+                break;
+        }
     }
 
     @Override
