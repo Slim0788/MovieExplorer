@@ -39,17 +39,14 @@ public class MoviesActivity extends AppCompatActivity implements MoviesAdapter.O
 
     @Override
     public void onItemClick(int position) {
-        showDetails(position);
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra(ITEM_POSITION, position);
+        startActivity(intent);
     }
 
-    private void showDetails(int position) {
-        if (position == MoviesAdapter.ADVERTISING_POSITION) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADVERTISING_URL)));
-        } else {
-            Intent intent = new Intent(this, DetailsActivity.class);
-            intent.putExtra(ITEM_POSITION, position);
-            startActivity(intent);
-        }
+    @Override
+    public void onAdvertisingClick() {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADVERTISING_URL)));
     }
 
 }

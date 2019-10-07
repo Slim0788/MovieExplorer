@@ -25,6 +25,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+        void onAdvertisingClick();
     }
 
     private List<Movie> listOfItems;
@@ -46,9 +47,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == ITEM_VIEW_TYPE_ADVERTISING) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_advertising, parent, false));
+            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_advertising, parent, false), viewType);
         }
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_item, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_item, parent, false), viewType);
     }
 
     @Override
@@ -72,25 +73,30 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     final class ViewHolder extends RecyclerView.ViewHolder {
 
-        final ImageView poster;
-        final TextView title;
-        final TextView overview;
+        private ImageView poster;
+        private TextView title;
+        private TextView overview;
 
-        private ViewHolder(@NonNull View itemView) {
+        private ViewHolder(@NonNull View itemView, int viewType) {
             super(itemView);
+            if (viewType != ITEM_VIEW_TYPE_ADVERTISING) {
+                poster = itemView.findViewById(R.id.movies_item_iv_poster);
+                title = itemView.findViewById(R.id.movies_item_tv_title);
+                overview = itemView.findViewById(R.id.movies_item_tv_overview_text);
+            }
 
-            poster = itemView.findViewById(R.id.movies_item_iv_poster);
-            title = itemView.findViewById(R.id.movies_item_tv_title);
-            overview = itemView.findViewById(R.id.movies_item_tv_overview_text);
-
-            setListeners();
+            setListeners(itemView, viewType);
         }
 
-        private void setListeners() {
+        private void setListeners(View itemView, int viewType) {
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
                 if (itemClickListener != null && position != RecyclerView.NO_POSITION) {
-                    itemClickListener.onItemClick(getAdapterPosition());
+                    if (viewType != ITEM_VIEW_TYPE_ADVERTISING) {
+                        itemClickListener.onItemClick(getAdapterPosition());
+                    } else {
+                        itemClickListener.onAdvertisingClick();
+                    }
                 }
             });
         }
