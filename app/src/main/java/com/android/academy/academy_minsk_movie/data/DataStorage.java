@@ -9,8 +9,10 @@ import java.util.List;
 public class DataStorage {
 
     private static DataStorage instance;
+    private List<Movie> movieList;
 
     private DataStorage() {
+        movieList = createMovieList();
     }
 
     public static DataStorage getInstance() {
@@ -21,6 +23,10 @@ public class DataStorage {
     }
 
     public List<Movie> getMovieList() {
+        return movieList;
+    }
+
+    private List<Movie> createMovieList() {
         List<Movie> list = new ArrayList<>();
         list.add(new Movie(
                 "Jurassic World - Fallen Kingdom",

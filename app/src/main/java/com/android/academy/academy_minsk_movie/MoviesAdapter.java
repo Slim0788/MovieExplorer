@@ -20,6 +20,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     private final OnItemClickListener itemClickListener;
 
     public static final int ADVERTISING_POSITION = 3;
+    private static final int ITEM_VIEW_TYPE_MOVIES = 0;
+    static final int ITEM_VIEW_TYPE_ADVERTISING = 1;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -34,36 +36,32 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        return position;
+        if (position != ADVERTISING_POSITION) {
+            return ITEM_VIEW_TYPE_MOVIES;
+        }
+        return ITEM_VIEW_TYPE_ADVERTISING;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        switch (viewType) {
-            case ADVERTISING_POSITION:
-                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_advertising, parent, false));
-            default:
-                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_item, parent, false));
+        if (viewType == ITEM_VIEW_TYPE_ADVERTISING) {
+            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_advertising, parent, false));
         }
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        switch (holder.getItemViewType()) {
-            case ADVERTISING_POSITION:
+        if (holder.getItemViewType() != ITEM_VIEW_TYPE_ADVERTISING) {
+            Movie movie = listOfItems.get(position);
 
-                break;
-            default:
-                Movie movie = listOfItems.get(position);
-
-                holder.title.setText(movie.getTitle());
-                holder.overview.setText(movie.getOverview());
-                Glide.with(holder.poster)
-                        .load(movie.getPosterRes())
-                        .into(holder.poster);
-                break;
+            holder.title.setText(movie.getTitle());
+            holder.overview.setText(movie.getOverview());
+            Glide.with(holder.poster)
+                    .load(movie.getPosterRes())
+                    .into(holder.poster);
         }
     }
 

@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
     tools:context=".DetailsActivity">
-
-    <ImageView
-        android:id="@+id/details_iv_backdrop"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/back_image_size"
-        android:contentDescription="@string/content_description_movie_backdrop"
-        android:scaleType="centerCrop"
-        tools:src="@drawable/avengers_endgame_big" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/details_iv_backdrop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/back_image_size"
+                android:contentDescription="@string/content_description_movie_backdrop"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/avengers_endgame_big" />
 
             <ImageView
                 android:id="@+id/details_iv_poster"
@@ -33,7 +31,7 @@
                 android:contentDescription="@string/content_description_movie_poster"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/details_iv_backdrop"
                 tools:src="@drawable/avengers_endgame" />
 
             <TextView
@@ -86,7 +84,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/button_movie_trailer"
                 app:layout_constraintStart_toStartOf="@+id/details_tv_released"
-                app:layout_constraintTop_toBottomOf="@+id/details_tv_released" />
+                app:layout_constraintTop_toBottomOf="@+id/details_tv_released_date" />
 
             <TextView
                 android:id="@+id/details_tv_overview"
@@ -118,5 +116,3 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-</LinearLayout>

@@ -6,16 +6,14 @@
     <string name="endgame_release_date">April 22, 2019</string>
     <string name="endgame_overview">After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos\' actions and restore order to the universe once and for all, no matter what consequences may be in store.</string>
 
-    <string name="advertising_url">https://www.youtube.com/playlist?list=PLH434_oX84wNp7NYYdFV5JqJozpWXIjlA</string>
-
     <string name="released_title">Released:</string>
     <string name="button_movie_trailer">Movie Trailer</string>
     <string name="overview_title">Overview:</string>
+    <string name="useful_series">Your favorite series ;)</string>
 
     <string name="exit_alert_title">Really Exit?</string>
     <string name="exit_alert_message">Are you sure you want to exit?</string>
 
     <string name="content_description_movie_backdrop">Movie Backdrop</string>
     <string name="content_description_movie_poster">Movie Poster</string>
-    <string name="useful_series">Your favorite series ;)</string>
 </resources>

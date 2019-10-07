@@ -12,21 +12,19 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 public class MoviesActivity extends AppCompatActivity implements MoviesAdapter.OnItemClickListener {
 
     public static final String ITEM_POSITION = "position";
-
-    private RecyclerView recyclerView;
-    private MoviesAdapter adapter;
+    private static final String ADVERTISING_URL = "https://www.youtube.com/playlist?list=PLH434_oX84wNp7NYYdFV5JqJozpWXIjlA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
 
-        recyclerView = findViewById(R.id.movies_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.movies_recycler_view);
         recyclerView.setHasFixedSize(true);
 
-        adapter = new MoviesAdapter(this);
+        MoviesAdapter adapter = new MoviesAdapter(this);
         recyclerView.setAdapter(adapter);
-        recyclerView.getRecycledViewPool().setMaxRecycledViews(R.layout.activity_movies_recycler_view_advertising, 1);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(MoviesAdapter.ITEM_VIEW_TYPE_ADVERTISING, 1);
     }
 
     @Override
@@ -46,14 +44,12 @@ public class MoviesActivity extends AppCompatActivity implements MoviesAdapter.O
 
     private void showDetails(int position) {
         if (position == MoviesAdapter.ADVERTISING_POSITION) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.advertising_url))));
-//            Toast.makeText(getApplicationContext(), "Это левый элемент списка", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADVERTISING_URL)));
         } else {
             Intent intent = new Intent(this, DetailsActivity.class);
             intent.putExtra(ITEM_POSITION, position);
             startActivity(intent);
         }
-
     }
 
 }
