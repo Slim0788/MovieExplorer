@@ -11,7 +11,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class MoviesActivity extends AppCompatActivity implements MoviesAdapter.OnItemClickListener {
 
-    public static final String ITEM_POSITION = "position";
     private static final String ADVERTISING_URL = "https://www.youtube.com/playlist?list=PLH434_oX84wNp7NYYdFV5JqJozpWXIjlA";
 
     @Override
@@ -39,9 +38,7 @@ public class MoviesActivity extends AppCompatActivity implements MoviesAdapter.O
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra(ITEM_POSITION, position);
-        startActivity(intent);
+        startActivity(DetailsActivity.newIntent(this, position));
     }
 
     @Override
