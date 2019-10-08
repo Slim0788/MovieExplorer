@@ -80,11 +80,11 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
-        movieTrailerButton.setOnClickListener(v -> showMovieTrailer(movie));
+        movieTrailerButton.setOnClickListener(v -> showMovieTrailer(movie.getTrailerUrl()));
     }
 
-    private void showMovieTrailer(Movie movie) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(movie.getTrailerUrl())));
+    private void showMovieTrailer(String trailerUrl) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(trailerUrl)));
     }
 
 }
