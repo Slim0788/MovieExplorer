@@ -45,6 +45,14 @@ public class DataStorage {
                 "https://youtu.be/GGYXExfKhmo"
         ));
         list.add(new Movie(
+                "The First Purge",
+                "To push the crime rate below one percent for the rest of the year, the New Founding Fathers of America test a sociological theory that vents aggression for one night in one isolated community. But when the violence of oppressors meets the rage of the others, the contagion will explode from the trial-city borders and spread across the nation",
+                R.drawable.the_first_purge,
+                R.drawable.the_first_purge_big,
+                "July 4, 2018",
+                "https://youtu.be/UL29y0ah92w"
+        ));
+        list.add(new Movie(
                 "Deadpool 2",
                 "Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy's life",
                 R.drawable.deadpool_2,
@@ -94,7 +102,7 @@ public class DataStorage {
         ));
         list.add(new Movie(
                 "Avengers: Endgame",
-                "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos\\' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
+                "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
                 R.drawable.avengers_endgame,
                 R.drawable.avengers_endgame_big,
                 "April 22, 2019",
