@@ -11,15 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.android.academy.academy_minsk_movie.MoviesActivity">
+        <activity android:name="com.android.academy.academy_minsk_movie.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.android.academy.academy_minsk_movie.DetailsActivity"
-            android:label="@string/activity_details" />
     </application>
 </manifest>

@@ -47,9 +47,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == ITEM_VIEW_TYPE_ADVERTISING) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_advertising, parent, false), viewType);
+            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movies_recycler_view_advertising, parent, false), viewType);
         }
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movies_recycler_view_item, parent, false), viewType);
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movies_recycler_view_item, parent, false), viewType);
     }
 
     @Override
