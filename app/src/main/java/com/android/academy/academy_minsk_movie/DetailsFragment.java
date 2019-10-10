@@ -28,10 +28,10 @@ public class DetailsFragment extends Fragment {
     private TextView overviewTextView;
     private TextView releaseDateTextView;
     private MaterialButton movieTrailerButton;
-    private Movie movie;
-    private int currentPosition;
 
     static Fragment newInstance(int position) {
+        // Возвращаем экземпляр фрагмента DetailsFragment с переданными ему аргументами
+
         Fragment fragment = new DetailsFragment();
         Bundle args = new Bundle();
         args.putInt(ITEM_POSITION, position);
@@ -48,29 +48,26 @@ public class DetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        int position = 0;
 
-//        if (savedInstanceState != null) {
-//            currentPosition = savedInstanceState.getInt(ITEM_POSITION);
-//        }
+        // Проверьем, есть ли аргументы, переданные фрагменту.
+        Bundle args = getArguments();
+        if (args != null) {
+            position = args.getInt(ITEM_POSITION);
+        }
+
+        // Инициализируем данные фильма
+        Movie movie = DataStorage.getInstance().getMovieList().get(position);
 
         init(view);
         setContent(movie);
-        setListeners();
-    }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(ITEM_POSITION, currentPosition);
+        // Вешаем слушатель на кнопку
+        movieTrailerButton.setOnClickListener(v ->
+                showMovieTrailer(movie.getTrailerUrl()));
     }
 
     private void init(View view) {
-        Bundle args = getArguments();
-        if (args != null) {
-            int position = args.getInt(ITEM_POSITION);
-            movie = DataStorage.getInstance().getMovieList().get(position);
-        }
-
         backdropImageView = view.findViewById(R.id.details_iv_backdrop);
         posterImageView = view.findViewById(R.id.details_iv_poster);
         titleTextView = view.findViewById(R.id.details_tv_title);
@@ -80,6 +77,8 @@ public class DetailsFragment extends Fragment {
     }
 
     private void setContent(Movie movie) {
+
+        // Сетим данные во вьюхи
         Glide.with(backdropImageView)
                 .load(movie.getBackdropRes())
                 .into(backdropImageView);
@@ -91,11 +90,9 @@ public class DetailsFragment extends Fragment {
         releaseDateTextView.setText(movie.getReleaseDate());
     }
 
-    private void setListeners() {
-        movieTrailerButton.setOnClickListener(v -> showMovieTrailer(movie.getTrailerUrl()));
-    }
-
     private void showMovieTrailer(String trailerUrl) {
+        // Переходим на YouTube
+
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(trailerUrl)));
     }
 
