@@ -54,14 +54,14 @@ public class MoviesFragment extends Fragment implements MoviesAdapter.OnItemClic
         // Пользователь выбрал фильм из фрагмента MoviesFragment.
 
         // Создаём фрагмент и даём ему аргументы (номер позиции) для выбранного фильма
-        Fragment detailsFragment = DetailsFragment.newInstance(position);
+        Fragment galleryDetailsFragment = GalleryDetailsFragment.newInstance(position);
 
         // Замените все, что находится в представлении 'container' FrameLayout на этот фрагмент,
         // и добавьте транзакцию в back stack, чтобы пользователь мог вернуться назад
         getFragmentManager()
                 .beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.container, detailsFragment)
+                .replace(R.id.container, galleryDetailsFragment)
                 .commit();
     }
 

@@ -42,7 +42,9 @@ public class DetailsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_details, container, false);
+        View view =  inflater.inflate(R.layout.fragment_details, container, false);
+        init(view);
+        return view;
     }
 
     @Override
@@ -59,7 +61,6 @@ public class DetailsFragment extends Fragment {
         // Инициализируем данные фильма
         Movie movie = DataStorage.getInstance().getMovieList().get(position);
 
-        init(view);
         setContent(movie);
 
         // Вешаем слушатель на кнопку
