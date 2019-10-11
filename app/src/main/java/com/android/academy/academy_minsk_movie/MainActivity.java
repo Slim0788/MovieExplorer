@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-        bottomAppBar.setNavigationOnClickListener(v -> showSnackBar("Navigation Drawer"));
+        bottomAppBar.setNavigationOnClickListener(v -> showSnackBar(getString(R.string.content_description_navigation_drawer)));
     }
 
     private void toggleBottomAppBar() {
