@@ -13,6 +13,7 @@
     <string name="content_description_movie_backdrop">Movie Backdrop</string>
     <string name="content_description_movie_poster">Movie Poster</string>
     <string name="content_description_navigation_drawer">Navigation Drawer</string>
+    <string name="content_description_close">Close</string>
 
     <string name="menu_item_mail">Mail</string>
     <string name="menu_item_archive">Archive</string>

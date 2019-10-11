@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -108,7 +109,10 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-        bottomAppBar.setNavigationOnClickListener(v -> showSnackBar(getString(R.string.content_description_navigation_drawer)));
+        bottomAppBar.setNavigationOnClickListener(v -> {
+            BottomSheetDialogFragment fragment = NavigationBottomSheetDialog.newInstance();
+            fragment.show(getSupportFragmentManager(), NavigationBottomSheetDialog.TAG);
+        });
     }
 
     private void toggleBottomAppBar() {

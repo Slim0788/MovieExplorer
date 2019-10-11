@@ -31,7 +31,7 @@ public class GalleryDetailsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_gallery_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_gallery_details, container, false);
         viewPager = view.findViewById(R.id.view_pager_details);
         return view;
     }
