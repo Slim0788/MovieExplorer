@@ -4,8 +4,8 @@
     style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:backgroundTint="@color/colorAccent"
-    app:cardCornerRadius="7dp"
+    android:backgroundTint="@color/colorSecondary"
+    app:cardCornerRadius="@dimen/card_view_corner_radius"
     app:cardUseCompatPadding="true">
 
     <TextView
