@@ -1,6 +1,5 @@
 <resources>
-    <string name="activity_movies">Academy Minsk Movies</string>
-    <string name="activity_details">Details</string>
+    <string name="app_name">Android Academy</string>
 
     <string name="released_title">Released:</string>
     <string name="button_movie_trailer">Movie Trailer</string>
