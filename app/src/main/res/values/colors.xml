@@ -5,6 +5,8 @@
     <color name="colorSecondary">#F57C00</color>
     <color name="colorBackground">#CFCFCF</color>
 
+    <color name="background_splash">#CFCFCF</color>
+
     <color name="ic_launcher_background">#FFFFFF</color>
 
     <color name="white">#FFFFFF</color>
