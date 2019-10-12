@@ -5,13 +5,10 @@
     <color name="colorSecondary">#F57C00</color>
     <color name="colorBackground">#CFCFCF</color>
 
-    <color name="background_splash">#CFCFCF</color>
+    <color name="background_splash">#FFFFFF</color>
 
     <color name="ic_launcher_background">#FFFFFF</color>
 
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="grey">#6B6B6B</color>
-    <color name="purple">#7B1FA2</color>
+    <color name="text_color_grey">#6B6B6B</color>
 
 </resources>

@@ -6,13 +6,13 @@
     <!--    For vector image-->
     <!--    <item-->
     <!--        android:gravity="center"-->
-    <!--        app:srcCompat="@drawable/splash_background_240dp" />-->
+    <!--        app:srcCompat="@drawable/splash_background_200dp" />-->
 
     <!--    For bitmap image-->
     <!--    <item>-->
     <!--        <bitmap-->
     <!--            android:gravity="center"-->
-    <!--            android:src="@drawable/splash_background_240dp" />-->
+    <!--            android:src="@drawable/splash_background_200dp" />-->
     <!--    </item>-->
 
 </layer-list>
