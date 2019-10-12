@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MoviesFragment extends Fragment implements MoviesAdapter.OnItemClickListener {
@@ -58,11 +59,14 @@ public class MoviesFragment extends Fragment implements MoviesAdapter.OnItemClic
 
         // Замените все, что находится в представлении 'container' FrameLayout на этот фрагмент,
         // и добавьте транзакцию в back stack, чтобы пользователь мог вернуться назад
-        getFragmentManager()
-                .beginTransaction()
-                .addToBackStack(null)
-                .replace(R.id.container, galleryDetailsFragment)
-                .commit();
+        FragmentManager manager = getFragmentManager();
+        if (manager != null) {
+            manager.beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.container, galleryDetailsFragment)
+                    .commit();
+        }
+
     }
 
     @Override

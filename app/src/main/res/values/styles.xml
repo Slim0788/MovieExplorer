@@ -13,9 +13,9 @@
     <!-- Splash theme. -->
     <style name="Splash" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash_scheme</item>
-        <item name="colorPrimaryDark">@color/background_splash</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>
