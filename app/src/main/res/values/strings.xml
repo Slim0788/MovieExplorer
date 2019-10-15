@@ -3,8 +3,8 @@
 
     <string name="menu_item_search">Search</string>
     <string name="menu_item_delete">Delete</string>
-    <string name="menu_item_turn_right">Turn Right</string>
-    <string name="menu_item_turn_left">Turn Left</string>
+    <string name="menu_item_next">Next</string>
+    <string name="menu_item_before">Before</string>
 
     <string name="details_released_title">Released:</string>
     <string name="details_button_movie_trailer">Movie Trailer</string>
@@ -26,10 +26,10 @@
 
     <string name="content_description_movie_backdrop">Movie Backdrop</string>
     <string name="content_description_movie_poster">Movie Poster</string>
-    <string name="content_description_navigation_drawer">Navigation Drawer</string>
-    <string name="content_description_come_back">Come Back</string>
-    <string name="content_description_close">Close</string>
-    <string name="content_description_indicator">Indicator</string>
+    <string name="content_description_appbar_navigation">Threads Tools</string>
+    <string name="content_description_appbar_come_back">Come Back</string>
+    <string name="content_description_threads_close">Close</string>
+    <string name="content_description_threads_indicator">Indicator</string>
 
 
 

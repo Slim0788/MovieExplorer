@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/app_bar_turn_left"
+        android:id="@+id/app_bar_navigate_before"
         android:icon="@drawable/ic_navigate_before_24dp"
-        android:title="@string/menu_item_turn_left"
+        android:title="@string/menu_item_before"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/app_bar_turn_right"
+        android:id="@+id/app_bar_navigate_next"
         android:icon="@drawable/ic_navigate_next_24dp"
-        android:title="@string/menu_item_turn_right"
+        android:title="@string/menu_item_next"
         app:showAsAction="ifRoom" />
 
 </menu>

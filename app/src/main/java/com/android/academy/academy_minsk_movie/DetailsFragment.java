@@ -1,5 +1,6 @@
 package com.android.academy.academy_minsk_movie;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.android.academy.academy_minsk_movie.data.DataStorage;
 import com.android.academy.academy_minsk_movie.data.Movie;
 import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class DetailsFragment extends Fragment {
 
@@ -28,6 +30,7 @@ public class DetailsFragment extends Fragment {
     private TextView overviewTextView;
     private TextView releaseDateTextView;
     private MaterialButton movieTrailerButton;
+    private FloatingActionButton fab;
 
     static Fragment newInstance(int position) {
         // Возвращаем экземпляр фрагмента DetailsFragment с переданными ему аргументами
@@ -66,9 +69,17 @@ public class DetailsFragment extends Fragment {
         // Вешаем слушатель на кнопку
         movieTrailerButton.setOnClickListener(v ->
                 showMovieTrailer(movie.getTrailerUrl()));
+
+        fab.setOnClickListener(v ->
+                showMovieTrailer(movie.getTrailerUrl()));
+
     }
 
     private void init(View view) {
+        Activity root = getActivity();
+        if (root != null){
+            fab = root.findViewById(R.id.floatingActionButton);
+        }
         backdropImageView = view.findViewById(R.id.details_iv_backdrop);
         posterImageView = view.findViewById(R.id.details_iv_poster);
         titleTextView = view.findViewById(R.id.details_tv_title);

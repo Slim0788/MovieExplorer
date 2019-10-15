@@ -18,16 +18,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:popupTheme="@android:style/ThemeOverlay.Material.Light"
+        app:fabAlignmentMode="end"
         app:fabAnimationMode="slide"
-        app:hideOnScroll="true" />
-    <!--        app:navigationIcon="@drawable/ic_menu_24dp"-->
-    <!--        app:navigationContentDescription="@string/content_description_navigation_drawer"/>-->
+        app:hideOnScroll="false" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottomAppBar"
-        app:srcCompat="@drawable/ic_youtube_24dp" />
+        app:srcCompat="@drawable/ic_android_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
