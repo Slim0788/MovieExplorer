@@ -15,16 +15,16 @@
         android:title="@string/menu_item_delete"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/app_bar_turn_left"
-        android:icon="@drawable/ic_navigate_before_24dp"
-        android:title="@string/menu_item_turn_left"
-        app:showAsAction="ifRoom" />
+<!--    <item-->
+<!--        android:id="@+id/app_bar_turn_left"-->
+<!--        android:icon="@drawable/ic_navigate_before_24dp"-->
+<!--        android:title="@string/menu_item_turn_left"-->
+<!--        app:showAsAction="ifRoom" />-->
 
-    <item
-        android:id="@+id/app_bar_turn_right"
-        android:icon="@drawable/ic_navigate_next_24dp"
-        android:title="@string/menu_item_turn_right"
-        app:showAsAction="ifRoom" />
+<!--    <item-->
+<!--        android:id="@+id/app_bar_turn_right"-->
+<!--        android:icon="@drawable/ic_navigate_next_24dp"-->
+<!--        android:title="@string/menu_item_turn_right"-->
+<!--        app:showAsAction="ifRoom" />-->
 
 </menu>

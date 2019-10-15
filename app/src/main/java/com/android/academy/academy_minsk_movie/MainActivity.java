@@ -1,6 +1,7 @@
 package com.android.academy.academy_minsk_movie;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -8,15 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomAppBar bottomAppBar;
-    FloatingActionButton fab;
+    private BottomAppBar bottomAppBar;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         init();
         setupBottomAppBar();
 
-        fab.setOnClickListener(v -> toggleBottomAppBar());
+        fab.setOnClickListener(v -> toggleFAB());
 
         // Проверяем, использует ли MainActivity версию макета
         // для планшета. Эта версия содержит <fragment.../> с id movies_fragment.
@@ -60,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.app_bar_menu, menu);
+        return true;
+
+    }
+
+
+    @Override
     public void onBackPressed() {
         // Пользователь нажал на кнопку "назад"
 
@@ -72,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                     .setNegativeButton(android.R.string.no, null)
                     .setPositiveButton(android.R.string.yes, (arg0, arg1) ->
                             MainActivity.super.onBackPressed()).create().show();
+        } else if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            setupBottomAppBar();
+            super.onBackPressed();
         } else {
             super.onBackPressed();
         }
@@ -83,7 +94,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupBottomAppBar() {
-        bottomAppBar.replaceMenu(R.menu.app_bar_menu);
+
+        setSupportActionBar(bottomAppBar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+//        bottomAppBar.replaceMenu(R.menu.app_bar_menu);
         bottomAppBar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.app_bar_search:
@@ -92,23 +108,23 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.app_bar_delete:
                     showSnackBar(getString(R.string.menu_item_delete));
                     return true;
-                case R.id.app_bar_turn_left:
-                    showSnackBar(getString(R.string.menu_item_turn_left));
-                    return true;
-                case R.id.app_bar_turn_right:
-                    showSnackBar(getString(R.string.menu_item_turn_right));
-                    return true;
+//                case R.id.app_bar_turn_left:
+//                    showToast(getString(R.string.menu_item_turn_left));
+//                    return true;
+//                case R.id.app_bar_turn_right:
+//                    showToast(getString(R.string.menu_item_turn_right));
+//                    return true;
             }
             return false;
         });
 
-        bottomAppBar.setNavigationOnClickListener(v -> {
-            BottomSheetDialogFragment fragment = ThreadsBottomSheetDialog.newInstance();
-            fragment.show(getSupportFragmentManager(), ThreadsBottomSheetDialog.TAG);
-        });
+//        bottomAppBar.setNavigationOnClickListener(v -> {
+//            BottomSheetDialogFragment fragment = ThreadsBottomSheetDialog.newInstance();
+//            fragment.show(getSupportFragmentManager(), ThreadsBottomSheetDialog.TAG);
+//        });
     }
 
-    private void toggleBottomAppBar() {
+    public void toggleFAB() {
         if (bottomAppBar.getFabAlignmentMode() == BottomAppBar.FAB_ALIGNMENT_MODE_CENTER) {
             bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_END);
             showSnackBar("FAB_ALIGNMENT_MODE_END");
