@@ -1,9 +1,8 @@
 package com.android.academy.academy_minsk_movie;
 
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -78,12 +77,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return super.onOptionsItemSelected(item);
-
-    }
-
     private void init() {
         bottomAppBar = findViewById(R.id.bottomAppBar);
         fab = findViewById(R.id.floatingActionButton);
@@ -96,22 +89,22 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.app_bar_search:
                     showSnackBar(getString(R.string.menu_item_search));
                     return true;
-                case R.id.app_bar_mail:
-                    showSnackBar(getString(R.string.menu_item_mail));
-                    return true;
                 case R.id.app_bar_delete:
                     showSnackBar(getString(R.string.menu_item_delete));
                     return true;
-                case R.id.app_bar_archive:
-                    showSnackBar(getString(R.string.menu_item_archive));
+                case R.id.app_bar_turn_left:
+                    showSnackBar(getString(R.string.menu_item_turn_left));
+                    return true;
+                case R.id.app_bar_turn_right:
+                    showSnackBar(getString(R.string.menu_item_turn_right));
                     return true;
             }
             return false;
         });
 
         bottomAppBar.setNavigationOnClickListener(v -> {
-            BottomSheetDialogFragment fragment = NavigationBottomSheetDialog.newInstance();
-            fragment.show(getSupportFragmentManager(), NavigationBottomSheetDialog.TAG);
+            BottomSheetDialogFragment fragment = ThreadsBottomSheetDialog.newInstance();
+            fragment.show(getSupportFragmentManager(), ThreadsBottomSheetDialog.TAG);
         });
     }
 
@@ -129,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
         Snackbar.make(findViewById(R.id.coordinator_main_activity), message, Snackbar.LENGTH_SHORT)
                 .setAnchorView(fab)
                 .show();
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 }

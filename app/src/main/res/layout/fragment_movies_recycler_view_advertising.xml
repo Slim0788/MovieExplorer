@@ -13,6 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/useful_series" />
+        android:text="@string/details_useful_series" />
 
 </com.google.android.material.card.MaterialCardView>

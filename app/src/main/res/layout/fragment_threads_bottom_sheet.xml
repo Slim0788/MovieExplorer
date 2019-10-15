@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/threads_cv_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:backgroundTint="@color/colorPrimary"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/threads_tv_title"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@string/threads_tools"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/threads_iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/content_description_close"
+                android:src="@drawable/ic_close_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:id="@+id/threads_rg_thread_tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/threads_tv_inform"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/threads_hard_work"
+                android:textStyle="italic"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="234dp" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_ui_thread"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/threads_ui_thread" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_handler_thread"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/threads_handler_thread" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_async_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/threads_async_task" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_coroutines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/threads_coroutines" />
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/threads_btn_start"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:text="@string/threads_start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/threads_rg_thread_tools"
+            app:layout_constraintStart_toStartOf="@+id/threads_rg_thread_tools"
+            app:layout_constraintTop_toBottomOf="@+id/threads_rg_thread_tools" />
+
+        <ImageView
+            android:id="@+id/threads_iv_indicator"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/content_description_indicator"
+            app:layout_constraintEnd_toStartOf="@+id/threads_rg_thread_tools"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_android_24dp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/threads_switch_indicator_scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/threads_scale_indicator"
+            app:layout_constraintBottom_toBottomOf="@+id/threads_btn_start"
+            app:layout_constraintEnd_toEndOf="@+id/threads_iv_indicator"
+            app:layout_constraintStart_toStartOf="@+id/threads_iv_indicator"
+            app:layout_constraintTop_toTopOf="@+id/threads_btn_start" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

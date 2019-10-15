@@ -27,6 +27,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottomAppBar"
-        app:srcCompat="@drawable/ic_android_24dp" />
+        app:srcCompat="@drawable/ic_youtube_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

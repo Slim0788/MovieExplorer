@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/app_bar_mail"
-        android:icon="@drawable/ic_mail_24dp"
-        android:title="@string/menu_item_mail"
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/ic_search_24dp"
+        android:title="@string/menu_item_search"
+        app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />
 
     <item
@@ -15,16 +16,15 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/app_bar_archive"
-        android:icon="@drawable/ic_archive_24dp"
-        android:title="@string/menu_item_archive"
+        android:id="@+id/app_bar_turn_left"
+        android:icon="@drawable/ic_navigate_before_24dp"
+        android:title="@string/menu_item_turn_left"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/app_bar_search"
-        android:icon="@drawable/ic_search_24dp"
-        android:title="@string/menu_item_search"
-        app:actionViewClass="android.widget.SearchView"
+        android:id="@+id/app_bar_turn_right"
+        android:icon="@drawable/ic_navigate_next_24dp"
+        android:title="@string/menu_item_turn_right"
         app:showAsAction="ifRoom" />
 
 </menu>
