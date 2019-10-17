@@ -1,5 +1,6 @@
 package com.android.academy.academy_minsk_movie;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,10 +18,28 @@ public class MoviesFragment extends Fragment implements MoviesAdapter.OnItemClic
 
     private static final String ADVERTISING_URL = "https://www.youtube.com/playlist?list=PLH434_oX84wNp7NYYdFV5JqJozpWXIjlA";
 
+    private OnFragmentInteractionListener fragmentInteractionListener;
+
+    interface OnFragmentInteractionListener {
+        // Слушатель для переключения Navigation icon на AppBar
+        void onFragmentInteraction();
+    }
+
     static Fragment newInstance() {
         // Возвращаем экземпляр фрагмента MoviesFragment
 
         return new MoviesFragment();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            fragmentInteractionListener = (OnFragmentInteractionListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " interface OnFragmentInteractionListener must be implemented");
+        }
     }
 
     @Nullable
@@ -52,6 +71,7 @@ public class MoviesFragment extends Fragment implements MoviesAdapter.OnItemClic
 
     @Override
     public void onItemClick(int position) {
+        fragmentInteractionListener.onFragmentInteraction();
         // Пользователь выбрал фильм из фрагмента MoviesFragment.
 
         // Создаём фрагмент и даём ему аргументы (номер позиции) для выбранного фильма

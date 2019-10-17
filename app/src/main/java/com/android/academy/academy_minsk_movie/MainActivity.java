@@ -1,10 +1,20 @@
 package com.android.academy.academy_minsk_movie;
 
+import android.animation.ValueAnimator;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Animatable2;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.animation.DecelerateInterpolator;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
@@ -13,10 +23,17 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MoviesFragment.OnFragmentInteractionListener {
 
     private BottomAppBar bottomAppBar;
     private FloatingActionButton fab;
+    private DrawerArrowDrawable homeDrawable;
+    private AnimatedVectorDrawable tickToCross, crossToTick;
+
+    // define a variable to track hamburger-arrow state
+    private boolean isHomeAsUp = false;
+    // define a variable to track tick-cross state
+    private boolean isTick = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,12 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
+        tickToCross = (AnimatedVectorDrawable) getDrawable(R.drawable.avd_tick2cross);
+        crossToTick = (AnimatedVectorDrawable) getDrawable(R.drawable.avd_cross2tick);
+
+        homeDrawable = new DrawerArrowDrawable(bottomAppBar.getContext());
+        bottomAppBar.setNavigationIcon(homeDrawable);
+
         // Реализовываем BottomAppBar через setSupportActionBar для настройки меню
         // через onCreateOptionsMenu. Если устанавливать меню через replaceMenu, то
         // при смене меню и передвижении FAB меню мигает несколько раз.
         setSupportActionBar(bottomAppBar);
 
-        setupBottomAppBar();
+        setupBottomAppBarPrimary();
 
         // Проверяем, использует ли MainActivity версию макета
         // для планшета. Эта версия содержит <fragment.../> с id movies_fragment.
@@ -59,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
                     .beginTransaction()
                     .add(R.id.container, fragment)
                     .commit();
-
-            // Если версия для телефона - разрешаем прятать bottomAppBar при скроле
-            bottomAppBar.setHideOnScroll(true);
         }
 
     }
@@ -73,6 +93,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.app_bar_search:
+                showSnackBar(getString(R.string.menu_item_search));
+                return true;
+            case R.id.app_bar_sync:
+                showSnackBar(getString(R.string.menu_item_sync));
+                Animatable animatable = (Animatable) item.getIcon();
+                if (animatable.isRunning()) {
+                    animatable.stop();
+                } else {
+                    animatable.start();
+                }
+                return true;
+        }
+        return false;
+    }
+
+    @Override
     public void onBackPressed() {
         // Пользователь нажал на кнопку "назад"
 
@@ -80,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
         // Если back stack пуст, то выводим диалог.
         switch (getSupportFragmentManager().getBackStackEntryCount()) {
             case 1:
-                setupBottomAppBar();
+                setupBottomAppBarPrimary();
+                setHomeAsUp(false);
                 super.onBackPressed();
                 break;
             case 0:
@@ -96,33 +136,54 @@ public class MainActivity extends AppCompatActivity {
         fab = findViewById(R.id.floatingActionButton);
     }
 
-    private void setupBottomAppBar() {
+    private void setupBottomAppBarPrimary() {
 
-        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_android_24dp));
-        fab.setOnClickListener(v -> showSnackBar("I am a FAB"));
+        fab.setImageDrawable(getResources().getDrawable(R.drawable.avd_tick2cross));
+        fab.setOnClickListener(v -> {
+            showSnackBar("I am a FAB");
+            animatedFAB();
+        });
 
         if (bottomAppBar.getFabAlignmentMode() != BottomAppBar.FAB_ALIGNMENT_MODE_END) {
             bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_END);
         }
 
-        bottomAppBar.setNavigationIcon(R.drawable.ic_menu_24dp);
         bottomAppBar.setContentDescription(getString(R.string.content_description_appbar_navigation));
-        bottomAppBar.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.app_bar_search:
-                    showSnackBar(getString(R.string.menu_item_search));
-                    return true;
-                case R.id.app_bar_delete:
-                    showSnackBar(getString(R.string.menu_item_delete));
-                    return true;
-            }
-            return false;
-        });
 
         bottomAppBar.setNavigationOnClickListener(v -> {
-            BottomSheetDialogFragment fragment = ThreadsBottomSheetDialog.newInstance();
-            fragment.show(getSupportFragmentManager(), ThreadsBottomSheetDialog.TAG);
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                BottomSheetDialogFragment fragment = ThreadsBottomSheetDialog.newInstance();
+                fragment.show(getSupportFragmentManager(), ThreadsBottomSheetDialog.TAG);
+            } else {
+                onBackPressed();
+            }
+
         });
+    }
+
+    private void setupBottomAppBarSecondary() {
+
+        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_youtube_24dp));
+
+        bottomAppBar.setNavigationContentDescription(getString(R.string.content_description_appbar_come_back));
+
+        if (bottomAppBar.getFabAlignmentMode() != BottomAppBar.FAB_ALIGNMENT_MODE_CENTER) {
+            bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
+        }
+    }
+
+    protected void setHomeAsUp(boolean isHomeAsUp) {
+        if (this.isHomeAsUp != isHomeAsUp) {
+            this.isHomeAsUp = isHomeAsUp;
+            ValueAnimator anim = isHomeAsUp ? ValueAnimator.ofFloat(0, 1) : ValueAnimator.ofFloat(1, 0);
+            anim.addUpdateListener(valueAnimator -> {
+                float slideOffset = (Float) valueAnimator.getAnimatedValue();
+                homeDrawable.setProgress(slideOffset);
+            });
+            anim.setInterpolator(new DecelerateInterpolator());
+            anim.setDuration(1000);
+            anim.start();
+        }
     }
 
     private void showExitDialog() {
@@ -140,6 +201,33 @@ public class MainActivity extends AppCompatActivity {
         Snackbar.make(findViewById(R.id.coordinator_main_activity), message, Snackbar.LENGTH_SHORT)
                 .setAnchorView(fab)
                 .show();
+    }
+
+    private void animatedFAB() {
+        AnimatedVectorDrawable drawable = isTick ? tickToCross : crossToTick;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawable.registerAnimationCallback(new Animatable2.AnimationCallback() {
+                @Override
+                public void onAnimationStart(Drawable drawable) {
+                    super.onAnimationStart(drawable);
+                }
+
+                @Override
+                public void onAnimationEnd(Drawable drawable) {
+                    super.onAnimationEnd(drawable);
+                }
+            });
+        }
+        fab.setImageDrawable(drawable);
+        drawable.start();
+        isTick = !isTick;
+    }
+
+    @Override
+    public void onFragmentInteraction() {
+        setHomeAsUp(true);
+        setupBottomAppBarSecondary();
     }
 
 }

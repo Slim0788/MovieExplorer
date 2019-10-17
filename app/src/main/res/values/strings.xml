@@ -2,7 +2,7 @@
     <string name="app_name">Android Academy</string>
 
     <string name="menu_item_search">Search</string>
-    <string name="menu_item_delete">Delete</string>
+    <string name="menu_item_sync">Synchronize</string>
     <string name="menu_item_next">Next</string>
     <string name="menu_item_before">Before</string>
 
