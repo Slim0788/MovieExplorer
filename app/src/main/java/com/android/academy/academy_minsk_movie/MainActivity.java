@@ -23,7 +23,16 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity implements MoviesFragment.OnFragmentInteractionListener {
+import org.jetbrains.annotations.NotNull;
+
+public class MainActivity extends AppCompatActivity implements MoviesAdapter.OnFragmentInteractionListener {
+
+    /**
+     * Holds the current image position to be shared between the grid and the pager fragments. This
+     * position updated when a grid item is clicked, or when paging the pager.
+     */
+    public static int currentPosition;
+    private static final String KEY_CURRENT_POSITION = "imageCurrentPosition";
 
     private BottomAppBar bottomAppBar;
     private FloatingActionButton fab;
@@ -66,6 +75,10 @@ public class MainActivity extends AppCompatActivity implements MoviesFragment.On
             // тогда нам не нужно ничего делать, и мы должны вернуться, иначе
             // мы могли бы получить перекрывающиеся фрагменты (например при повороте экрана).
             if (savedInstanceState != null) {
+
+                currentPosition = savedInstanceState.getInt(KEY_CURRENT_POSITION, 0);
+                // Return here to prevent adding additional MovieFragments when changing orientation.
+
                 return;
             }
 
@@ -84,6 +97,12 @@ public class MainActivity extends AppCompatActivity implements MoviesFragment.On
                     .commit();
         }
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_CURRENT_POSITION, currentPosition);
     }
 
     @Override

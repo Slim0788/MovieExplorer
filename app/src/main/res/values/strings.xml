@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Android Academy</string>
 
+    <string name="image_description">Image</string>
+
     <string name="menu_item_search">Search</string>
     <string name="menu_item_sync">Synchronize</string>
     <string name="menu_item_next">Next</string>
@@ -30,8 +32,5 @@
     <string name="content_description_appbar_come_back">Come Back</string>
     <string name="content_description_threads_close">Close</string>
     <string name="content_description_threads_indicator">Indicator</string>
-
-
-
 
 </resources>
