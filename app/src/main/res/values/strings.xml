@@ -19,7 +19,7 @@
     <string name="threads_coroutines">Coroutines</string>
     <string name="threads_scale_indicator">Scale Indicator</string>
     <string name="threads_start">Start</string>
-    <string name="threads_chose_tool">Chose a tool!</string>
+    <string name="threads_choose_tool">Choose a tool!</string>
 
     <string name="exit_alert_title">Really Exit?</string>
     <string name="exit_alert_message">Are you sure you want to exit?</string>

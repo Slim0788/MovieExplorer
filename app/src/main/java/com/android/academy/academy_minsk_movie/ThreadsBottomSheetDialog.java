@@ -85,7 +85,7 @@ public class ThreadsBottomSheetDialog extends BottomSheetDialogFragment {
                 Toast.makeText(getContext(), "Coroutines", Toast.LENGTH_SHORT).show();
                 break;
             default:
-                Toast.makeText(getContext(), getString(R.string.threads_chose_tool), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.threads_choose_tool), Toast.LENGTH_SHORT).show();
         }
     }
 
