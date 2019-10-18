@@ -1,4 +1,4 @@
-package com.android.academy.academy_minsk_movie;
+package com.android.academy.academy_minsk_movie.ui.gallery_movies_details;
 
 import android.view.View;
 

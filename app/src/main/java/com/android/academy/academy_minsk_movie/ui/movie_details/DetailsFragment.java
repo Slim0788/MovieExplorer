@@ -1,4 +1,4 @@
-package com.android.academy.academy_minsk_movie;
+package com.android.academy.academy_minsk_movie.ui.movie_details;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.android.academy.academy_minsk_movie.R;
 import com.android.academy.academy_minsk_movie.data.DataStorage;
 import com.android.academy.academy_minsk_movie.data.Movie;
 import com.bumptech.glide.Glide;
@@ -32,7 +33,7 @@ public class DetailsFragment extends Fragment {
     private MaterialButton movieTrailerButton;
     private FloatingActionButton fab;
 
-    static Fragment newInstance(int position) {
+    public static Fragment newInstance(int position) {
         // Возвращаем экземпляр фрагмента DetailsFragment с переданными ему аргументами
 
         Fragment fragment = new DetailsFragment();

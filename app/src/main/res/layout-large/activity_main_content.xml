@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/movies_fragment"
-        android:name="com.android.academy.academy_minsk_movie.MoviesFragment"
+        android:name="com.android.academy.academy_minsk_movie.ui.movies_list.MoviesFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

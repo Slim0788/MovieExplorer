@@ -1,6 +1,6 @@
 package com.android.academy.academy_minsk_movie.data;
 
-import com.android.academy.academy_minsk_movie.MoviesAdapter;
+import com.android.academy.academy_minsk_movie.ui.movies_list.MoviesAdapter;
 import com.android.academy.academy_minsk_movie.R;
 
 import java.util.ArrayList;

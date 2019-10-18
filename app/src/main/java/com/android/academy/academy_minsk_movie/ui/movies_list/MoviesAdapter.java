@@ -1,4 +1,4 @@
-package com.android.academy.academy_minsk_movie;
+package com.android.academy.academy_minsk_movie.ui.movies_list;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.academy.academy_minsk_movie.R;
 import com.android.academy.academy_minsk_movie.data.DataStorage;
 import com.android.academy.academy_minsk_movie.data.Movie;
 import com.bumptech.glide.Glide;

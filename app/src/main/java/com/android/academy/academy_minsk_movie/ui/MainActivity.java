@@ -1,4 +1,4 @@
-package com.android.academy.academy_minsk_movie;
+package com.android.academy.academy_minsk_movie.ui;
 
 import android.animation.ValueAnimator;
 import android.graphics.drawable.Animatable;
@@ -17,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.fragment.app.Fragment;
 
+import com.android.academy.academy_minsk_movie.R;
+import com.android.academy.academy_minsk_movie.ui.movies_list.MoviesFragment;
+import com.android.academy.academy_minsk_movie.ui.threads_dialog.ThreadsBottomSheetDialog;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;

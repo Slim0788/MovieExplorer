@@ -1,4 +1,4 @@
-package com.android.academy.academy_minsk_movie;
+package com.android.academy.academy_minsk_movie.ui.gallery_movies_details;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.android.academy.academy_minsk_movie.data.DataStorage;
+import com.android.academy.academy_minsk_movie.ui.movie_details.DetailsFragment;
 
 public class GalleryDetailsAdapter extends FragmentStatePagerAdapter {
 

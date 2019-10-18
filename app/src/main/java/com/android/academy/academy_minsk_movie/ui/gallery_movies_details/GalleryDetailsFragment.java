@@ -1,4 +1,4 @@
-package com.android.academy.academy_minsk_movie;
+package com.android.academy.academy_minsk_movie.ui.gallery_movies_details;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.android.academy.academy_minsk_movie.R;
+
 import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
 public class GalleryDetailsFragment extends Fragment {
@@ -22,7 +24,7 @@ public class GalleryDetailsFragment extends Fragment {
 
     private ViewPager viewPager;
 
-    static Fragment newInstance(int position) {
+    public static Fragment newInstance(int position) {
         // Возвращаем экземпляр фрагмента GalleryDetailsFragment с переданными ему аргументами
 
         Fragment fragment = new GalleryDetailsFragment();
