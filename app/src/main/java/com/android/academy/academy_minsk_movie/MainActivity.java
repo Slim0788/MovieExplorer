@@ -138,7 +138,9 @@ public class MainActivity extends AppCompatActivity implements MoviesFragment.On
 
     private void setupBottomAppBarPrimary() {
 
-        fab.setImageDrawable(getResources().getDrawable(R.drawable.avd_tick2cross));
+        fab.setImageDrawable(getResources().getDrawable(isTick ?
+                R.drawable.avd_tick2cross :
+                R.drawable.avd_cross2tick));
         fab.setOnClickListener(v -> {
             showSnackBar("I am a FAB");
             animatedFAB();
@@ -163,13 +165,15 @@ public class MainActivity extends AppCompatActivity implements MoviesFragment.On
 
     private void setupBottomAppBarSecondary() {
 
-        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_youtube_24dp));
+        setHomeAsUp(true);
 
         bottomAppBar.setNavigationContentDescription(getString(R.string.content_description_appbar_come_back));
 
         if (bottomAppBar.getFabAlignmentMode() != BottomAppBar.FAB_ALIGNMENT_MODE_CENTER) {
             bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
         }
+
+        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_youtube_24dp));
     }
 
     protected void setHomeAsUp(boolean isHomeAsUp) {
@@ -226,7 +230,6 @@ public class MainActivity extends AppCompatActivity implements MoviesFragment.On
 
     @Override
     public void onFragmentInteraction() {
-        setHomeAsUp(true);
         setupBottomAppBarSecondary();
     }
 
