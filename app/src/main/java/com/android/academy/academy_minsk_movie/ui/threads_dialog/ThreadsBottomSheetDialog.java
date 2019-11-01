@@ -1,4 +1,4 @@
-package com.android.academy.academy_minsk_movie;
+package com.android.academy.academy_minsk_movie.ui.threads_dialog;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.academy.academy_minsk_movie.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
@@ -19,7 +20,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 
 public class ThreadsBottomSheetDialog extends BottomSheetDialogFragment {
 
-    static final String TAG = "ThreadsBottomSheetDialog";
+    public static final String TAG = "ThreadsBottomSheetDialog";
 
     private ImageView closeImageView;
     private ImageView indicatorImageView;
@@ -27,7 +28,7 @@ public class ThreadsBottomSheetDialog extends BottomSheetDialogFragment {
     private SwitchMaterial indicatorScaleSwitch;
     private MaterialButton startButton;
 
-    static BottomSheetDialogFragment newInstance() {
+    public static BottomSheetDialogFragment newInstance() {
         return new ThreadsBottomSheetDialog();
     }
 

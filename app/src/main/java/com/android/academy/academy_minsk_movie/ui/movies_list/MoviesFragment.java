@@ -1,4 +1,4 @@
-package com.android.academy.academy_minsk_movie;
+package com.android.academy.academy_minsk_movie.ui.movies_list;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,18 +14,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.academy.academy_minsk_movie.R;
+import com.android.academy.academy_minsk_movie.ui.gallery_movies_details.GalleryDetailsFragment;
+
 public class MoviesFragment extends Fragment implements MoviesAdapter.OnItemClickListener {
 
     private static final String ADVERTISING_URL = "https://www.youtube.com/playlist?list=PLH434_oX84wNp7NYYdFV5JqJozpWXIjlA";
 
     private OnFragmentInteractionListener fragmentInteractionListener;
 
-    interface OnFragmentInteractionListener {
+    public interface OnFragmentInteractionListener {
         // Слушатель для переключения Navigation icon на AppBar
         void onFragmentInteraction();
     }
 
-    static Fragment newInstance() {
+    public static Fragment newInstance() {
         // Возвращаем экземпляр фрагмента MoviesFragment
 
         return new MoviesFragment();

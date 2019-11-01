@@ -1,19 +1,15 @@
 package com.android.academy.academy_minsk_movie.data;
 
-import androidx.annotation.DrawableRes;
-
 public class Movie {
 
     private String title;
     private String overview;
-    @DrawableRes
-    private int posterRes;
-    @DrawableRes
-    private int backdropRes;
+    private String posterRes;
+    private String backdropRes;
     private String releaseDate;
     private String trailerUrl;
 
-    Movie(String title, String overview, int posterRes, int backdropRes, String releaseDate, String trailerUrl) {
+    Movie(String title, String overview, String posterRes, String backdropRes, String releaseDate, String trailerUrl) {
         this.title = title;
         this.overview = overview;
         this.posterRes = posterRes;
@@ -30,11 +26,11 @@ public class Movie {
         return overview;
     }
 
-    public int getPosterRes() {
+    public String getPosterRes() {
         return posterRes;
     }
 
-    public int getBackdropRes() {
+    public String getBackdropRes() {
         return backdropRes;
     }
 

@@ -1,9 +1,11 @@
-package com.android.academy.academy_minsk_movie;
+package com.android.academy.academy_minsk_movie.ui;
 
 import android.content.Intent;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.academy.academy_minsk_movie.R;
 
 public class SplashActivity extends AppCompatActivity {
 

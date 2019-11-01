@@ -7,5 +7,5 @@
     android:layout_height="match_parent"
     android:layoutAnimation="@anim/layout_animation_fall_down"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:context=".MoviesFragment"
+    tools:context=".ui.movies_list.MoviesFragment"
     tools:listitem="@layout/fragment_movies_recycler_view_item" />
