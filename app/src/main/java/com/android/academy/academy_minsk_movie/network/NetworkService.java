@@ -14,18 +14,18 @@ public class NetworkService {
 
     private Retrofit retrofit;
 
+    private NetworkService() {
+        retrofit = new Retrofit.Builder()
+                .baseUrl(TMDB_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
     public static NetworkService getInstance() {
         if (instance == null) {
             instance = new NetworkService();
         }
         return instance;
-    }
-
-    private void getRetrofit() {
-        retrofit = new Retrofit.Builder()
-                .baseUrl(TMDB_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
     }
 
     public TmdbServiceApi getJsonApi() {

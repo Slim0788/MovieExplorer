@@ -1,12 +1,11 @@
 package com.android.academy.academy_minsk_movie.ui.movies_list;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,13 +14,22 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.academy.academy_minsk_movie.R;
+import com.android.academy.academy_minsk_movie.data.DataStorage;
+import com.android.academy.academy_minsk_movie.data.Movie;
 import com.android.academy.academy_minsk_movie.ui.gallery_movies_details.GalleryDetailsFragment;
 
-public class MoviesFragment extends Fragment implements MoviesAdapter.OnItemClickListener {
+import java.util.ArrayList;
+import java.util.List;
 
-    private static final String ADVERTISING_URL = "https://www.youtube.com/playlist?list=PLH434_oX84wNp7NYYdFV5JqJozpWXIjlA";
+public class MoviesFragment extends Fragment implements
+        MoviesAdapter.OnItemClickListener,
+        DataStorage.OnResponseListener {
 
     private OnFragmentInteractionListener fragmentInteractionListener;
+
+    private ProgressBar progressBar;
+    private List<Movie> movies;
+    private RecyclerView recyclerView;
 
     public interface OnFragmentInteractionListener {
         // Слушатель для переключения Navigation icon на AppBar
@@ -55,20 +63,22 @@ public class MoviesFragment extends Fragment implements MoviesAdapter.OnItemClic
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        progressBar = view.findViewById(R.id.movies_progressBar);
+
+        movies = new ArrayList<>();
+
         // Находим recyclerView на макете фрагмента
-        RecyclerView recyclerView = view.findViewById(R.id.movies_recycler_view);
+        recyclerView = view.findViewById(R.id.movies_recycler_view);
 
         // Для конечного числа элементов в списке ставим значение true для увеличения
         // производительности. Не подходит для бесконечных подгружаемых списков.
         recyclerView.setHasFixedSize(true);
 
         // Создаём адаптер для recyclerView и передаём ему в конструктор слушатель кликов
-        MoviesAdapter adapter = new MoviesAdapter(this);
+        MoviesAdapter adapter = new MoviesAdapter(this, movies);
         recyclerView.setAdapter(adapter);
 
-        // Ограничиваем pool для view типа реклама, т.к. такого типа view у нас в единственном
-        // экземпляре и нам незачем хранить её в памяти. По-умолчанию в пуле хранится 5 view.
-        recyclerView.getRecycledViewPool().setMaxRecycledViews(MoviesAdapter.ITEM_VIEW_TYPE_ADVERTISING, 1);
+        DataStorage.getInstance().getMoviesList(this);
 
     }
 
@@ -93,10 +103,12 @@ public class MoviesFragment extends Fragment implements MoviesAdapter.OnItemClic
     }
 
     @Override
-    public void onAdvertisingClick() {
-        // Пользователь выбрал рекламу из фрагмента MoviesFragment.
-
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADVERTISING_URL)));
+    public void updateMovieList(List<Movie> responseMovieList) {
+        movies.addAll(responseMovieList);
+        if (recyclerView.getAdapter() != null) {
+            recyclerView.getAdapter().notifyDataSetChanged();
+        }
+        progressBar.setVisibility(View.GONE);
     }
 
 }
