@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MoviesFragment extends Fragment implements
         MoviesAdapter.OnItemClickListener,
-        DataStorage.OnResponseListener {
+        DataStorage.OnMovieListResponseListener {
 
     private OnFragmentInteractionListener fragmentInteractionListener;
 

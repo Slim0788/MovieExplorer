@@ -2,6 +2,7 @@ package com.android.academy.academy_minsk_movie.data;
 
 import com.android.academy.academy_minsk_movie.data.model.Movie;
 import com.android.academy.academy_minsk_movie.network.NetworkService;
+import com.android.academy.academy_minsk_movie.network.dto.MovieVideoDto;
 import com.android.academy.academy_minsk_movie.network.dto.PopularMovieDto;
 import com.android.academy.academy_minsk_movie.service.TmdbMapper;
 
@@ -16,8 +17,12 @@ import retrofit2.Response;
 
 public class DataStorage {
 
-    public interface OnResponseListener {
+    public interface OnMovieListResponseListener {
         void updateMovieList(List<Movie> responseMovieList);
+    }
+
+    public interface OnMovieTrailerResponseListener {
+        void setMovieTrailer(String trailerUrl);
     }
 
     private static DataStorage instance;
@@ -38,7 +43,7 @@ public class DataStorage {
         return movieList;
     }
 
-    public void getMoviesList(OnResponseListener responseListener) {
+    public void getMoviesList(OnMovieListResponseListener movieListResponseListener) {
         NetworkService.getInstance()
                 .getJsonApi()
                 .getPopularMovies(NetworkService.TMDB_API_KEY)
@@ -49,12 +54,32 @@ public class DataStorage {
 
                             movieList = TmdbMapper.mapMovieList(response.body());
 
-                            responseListener.updateMovieList(movieList);
+                            movieListResponseListener.updateMovieList(movieList);
                         }
                     }
 
                     @Override
                     public void onFailure(@NotNull Call<PopularMovieDto> call, @NotNull Throwable t) {
+
+                    }
+                });
+    }
+
+    public void getMovieTrailer(int id, OnMovieTrailerResponseListener movieTrailerResponseListener) {
+        NetworkService.getInstance()
+                .getJsonApi()
+                .getMovieVideos(id, NetworkService.TMDB_API_KEY)
+                .enqueue(new Callback<MovieVideoDto>() {
+                    @Override
+                    public void onResponse(@NotNull Call<MovieVideoDto> call, @NotNull Response<MovieVideoDto> response) {
+                        if (response.body() != null) {
+                            String trailerUrl = TmdbMapper.mapTrailerUrl(response.body().getVideoDetails().get(0));
+                            movieTrailerResponseListener.setMovieTrailer(trailerUrl);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull Call<MovieVideoDto> call, @NotNull Throwable t) {
 
                     }
                 });

@@ -1,6 +1,5 @@
 package com.android.academy.academy_minsk_movie.ui.movie_details;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,9 +18,9 @@ import com.android.academy.academy_minsk_movie.data.DataStorage;
 import com.android.academy.academy_minsk_movie.data.model.Movie;
 import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class DetailsFragment extends Fragment {
+public class DetailsFragment extends Fragment implements
+        DataStorage.OnMovieTrailerResponseListener {
 
     private static final String ITEM_POSITION = "position";
 
@@ -31,7 +30,6 @@ public class DetailsFragment extends Fragment {
     private TextView overviewTextView;
     private TextView releaseDateTextView;
     private MaterialButton movieTrailerButton;
-    private FloatingActionButton fab;
 
     public static Fragment newInstance(int position) {
         // Возвращаем экземпляр фрагмента DetailsFragment с переданными ему аргументами
@@ -46,7 +44,7 @@ public class DetailsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_details, container, false);
         init(view);
         return view;
     }
@@ -65,22 +63,13 @@ public class DetailsFragment extends Fragment {
         // Инициализируем данные фильма
         Movie movie = DataStorage.getInstance().getMovieList().get(position);
 
-        setContent(movie);
+        DataStorage.getInstance().getMovieTrailer(movie.getId(), this);
 
-        // Вешаем слушатель на кнопку
-//        movieTrailerButton.setOnClickListener(v ->
-//                showMovieTrailer(movie.getTrailerUrl()));
-//
-//        fab.setOnClickListener(v ->
-//                showMovieTrailer(movie.getTrailerUrl()));
+        setContent(movie);
 
     }
 
     private void init(View view) {
-        Activity root = getActivity();
-        if (root != null){
-            fab = root.findViewById(R.id.floatingActionButton);
-        }
         backdropImageView = view.findViewById(R.id.details_iv_backdrop);
         posterImageView = view.findViewById(R.id.details_iv_poster);
         titleTextView = view.findViewById(R.id.details_tv_title);
@@ -103,10 +92,11 @@ public class DetailsFragment extends Fragment {
         releaseDateTextView.setText(movie.getReleaseDate());
     }
 
-    private void showMovieTrailer(String trailerUrl) {
-        // Переходим на YouTube
-
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(trailerUrl)));
+    @Override
+    public void setMovieTrailer(String trailerUrl) {
+        movieTrailerButton.setOnClickListener(v ->
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(trailerUrl)))
+        );
+        movieTrailerButton.setEnabled(true);
     }
-
 }

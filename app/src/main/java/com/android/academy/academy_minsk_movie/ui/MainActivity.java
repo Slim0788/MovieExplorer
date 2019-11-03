@@ -26,7 +26,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity implements MoviesFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements
+        MoviesFragment.OnFragmentInteractionListener {
 
     private BottomAppBar bottomAppBar;
     private FloatingActionButton fab;
