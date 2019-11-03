@@ -55,7 +55,7 @@ dependencies {
 //    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
 
     // OkHttp-interceptor
-//    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.0'
 
     // GSON
     implementation 'com.google.code.gson:gson:2.8.6'
