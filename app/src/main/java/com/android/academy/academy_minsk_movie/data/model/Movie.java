@@ -1,7 +1,12 @@
-package com.android.academy.academy_minsk_movie.data;
+package com.android.academy.academy_minsk_movie.data.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Movie {
 
+    @PrimaryKey
     private int id;
     private String title;
     private String overview;
@@ -9,7 +14,7 @@ public class Movie {
     private String backdrop;
     private String releaseDate;
 
-    Movie(int id, String title, String overview, String poster, String backdrop, String releaseDate) {
+    public Movie(int id, String title, String overview, String poster, String backdrop, String releaseDate) {
         this.id = id;
         this.title = title;
         this.overview = overview;
@@ -18,7 +23,7 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 

@@ -1,8 +1,9 @@
 package com.android.academy.academy_minsk_movie.data;
 
+import com.android.academy.academy_minsk_movie.data.model.Movie;
 import com.android.academy.academy_minsk_movie.network.NetworkService;
-import com.android.academy.academy_minsk_movie.network.dto.MovieDto;
 import com.android.academy.academy_minsk_movie.network.dto.PopularMovieDto;
+import com.android.academy.academy_minsk_movie.service.TmdbMapper;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -14,10 +15,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DataStorage {
-
-    private static final String POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342";
-    private static final String BACKDROP_BASE_URL = "https://image.tmdb.org/t/p/w780";
-    private static final String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
 
     public interface OnResponseListener {
         void updateMovieList(List<Movie> responseMovieList);
@@ -48,22 +45,9 @@ public class DataStorage {
                 .enqueue(new Callback<PopularMovieDto>() {
                     @Override
                     public void onResponse(@NotNull Call<PopularMovieDto> call, @NotNull Response<PopularMovieDto> response) {
-                        List<MovieDto> resultList;
                         if (response.body() != null) {
 
-                            resultList = response.body().getPopularMovieList();
-
-                            for (MovieDto result : resultList) {
-                                movieList.add(
-                                        new Movie(
-                                                result.getId(),
-                                                result.getTitle(),
-                                                result.getOverview(),
-                                                POSTER_BASE_URL + result.getPosterPath(),
-                                                BACKDROP_BASE_URL + result.getBackdropPath(),
-                                                result.getReleaseDate()
-                                        ));
-                            }
+                            movieList = TmdbMapper.mapMovieList(response.body());
 
                             responseListener.updateMovieList(movieList);
                         }

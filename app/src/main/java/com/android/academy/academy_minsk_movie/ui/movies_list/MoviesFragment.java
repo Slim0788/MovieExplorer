@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.academy.academy_minsk_movie.R;
 import com.android.academy.academy_minsk_movie.data.DataStorage;
-import com.android.academy.academy_minsk_movie.data.Movie;
+import com.android.academy.academy_minsk_movie.data.model.Movie;
 import com.android.academy.academy_minsk_movie.ui.gallery_movies_details.GalleryDetailsFragment;
 
 import java.util.ArrayList;

@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.android.academy.academy_minsk_movie.R;
 import com.android.academy.academy_minsk_movie.data.DataStorage;
-import com.android.academy.academy_minsk_movie.data.Movie;
+import com.android.academy.academy_minsk_movie.data.model.Movie;
 import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

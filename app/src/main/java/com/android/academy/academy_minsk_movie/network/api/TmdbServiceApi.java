@@ -1,5 +1,6 @@
 package com.android.academy.academy_minsk_movie.network.api;
 
+import com.android.academy.academy_minsk_movie.network.dto.MovieVideoDto;
 import com.android.academy.academy_minsk_movie.network.dto.PopularMovieDto;
 
 import retrofit2.Call;
@@ -15,7 +16,7 @@ public interface TmdbServiceApi {
     );
 
     @GET("movie/{movieId}/videos")
-    Call<Object> getMovieVideos(
+    Call<MovieVideoDto> getMovieVideos(
             @Path("movieId") int movieId,
             @Query("api_key") String apiKey
     );

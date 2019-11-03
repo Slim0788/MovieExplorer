@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.academy.academy_minsk_movie.R;
-import com.android.academy.academy_minsk_movie.data.Movie;
+import com.android.academy.academy_minsk_movie.data.model.Movie;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
