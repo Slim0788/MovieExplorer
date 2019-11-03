@@ -73,7 +73,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
         private void onBind(Movie movie) {
             Glide.with(poster)
-                    .load(movie.getPosterRes())
+                    .load(movie.getPoster())
                     .into(poster);
             title.setText(movie.getTitle());
             overview.setText(movie.getOverview());

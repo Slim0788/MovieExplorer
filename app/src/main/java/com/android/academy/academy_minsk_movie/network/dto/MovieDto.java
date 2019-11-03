@@ -3,53 +3,48 @@ package com.android.academy.academy_minsk_movie.network.dto;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class MovieDto {
 
-    @SerializedName("page")
+    @SerializedName("id")
     @Expose
-    private Integer page;
-    @SerializedName("total_results")
+    private Integer id;
+    @SerializedName("title")
     @Expose
-    private Integer totalResults;
-    @SerializedName("total_pages")
+    private String title;
+    @SerializedName("overview")
     @Expose
-    private Integer totalPages;
-    @SerializedName("results")
+    private String overview;
+    @SerializedName("release_date")
     @Expose
-    private List<Result> results = null;
+    private String releaseDate;
+    @SerializedName("poster_path")
+    @Expose
+    private String posterPath;
+    @SerializedName("backdrop_path")
+    @Expose
+    private String backdropPath;
 
-    public Integer getPage() {
-        return page;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPage(Integer page) {
-        this.page = page;
+    public String getTitle() {
+        return title;
     }
 
-    public Integer getTotalResults() {
-        return totalResults;
+    public String getOverview() {
+        return overview;
     }
 
-    public void setTotalResults(Integer totalResults) {
-        this.totalResults = totalResults;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public Integer getTotalPages() {
-        return totalPages;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public void setTotalPages(Integer totalPages) {
-        this.totalPages = totalPages;
+    public String getBackdropPath() {
+        return backdropPath;
     }
-
-    public List<Result> getResults() {
-        return results;
-    }
-
-    public void setResults(List<Result> results) {
-        this.results = results;
-    }
-
 }

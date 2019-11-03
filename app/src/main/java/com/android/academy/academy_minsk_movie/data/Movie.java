@@ -2,20 +2,24 @@ package com.android.academy.academy_minsk_movie.data;
 
 public class Movie {
 
+    private int id;
     private String title;
     private String overview;
-    private String posterRes;
-    private String backdropRes;
+    private String poster;
+    private String backdrop;
     private String releaseDate;
-    private String trailerUrl;
 
-    Movie(String title, String overview, String posterRes, String backdropRes, String releaseDate, String trailerUrl) {
+    Movie(int id, String title, String overview, String poster, String backdrop, String releaseDate) {
+        this.id = id;
         this.title = title;
         this.overview = overview;
-        this.posterRes = posterRes;
-        this.backdropRes = backdropRes;
+        this.poster = poster;
+        this.backdrop = backdrop;
         this.releaseDate = releaseDate;
-        this.trailerUrl = trailerUrl;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public String getTitle() {
@@ -26,19 +30,16 @@ public class Movie {
         return overview;
     }
 
-    public String getPosterRes() {
-        return posterRes;
+    public String getPoster() {
+        return poster;
     }
 
-    public String getBackdropRes() {
-        return backdropRes;
+    public String getBackdrop() {
+        return backdrop;
     }
 
     public String getReleaseDate() {
         return releaseDate;
     }
 
-    public String getTrailerUrl() {
-        return trailerUrl;
-    }
 }

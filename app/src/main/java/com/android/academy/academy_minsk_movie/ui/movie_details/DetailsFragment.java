@@ -68,11 +68,11 @@ public class DetailsFragment extends Fragment {
         setContent(movie);
 
         // Вешаем слушатель на кнопку
-        movieTrailerButton.setOnClickListener(v ->
-                showMovieTrailer(movie.getTrailerUrl()));
-
-        fab.setOnClickListener(v ->
-                showMovieTrailer(movie.getTrailerUrl()));
+//        movieTrailerButton.setOnClickListener(v ->
+//                showMovieTrailer(movie.getTrailerUrl()));
+//
+//        fab.setOnClickListener(v ->
+//                showMovieTrailer(movie.getTrailerUrl()));
 
     }
 
@@ -93,10 +93,10 @@ public class DetailsFragment extends Fragment {
 
         // Сетим данные во вьюхи
         Glide.with(backdropImageView)
-                .load(movie.getBackdropRes())
+                .load(movie.getBackdrop())
                 .into(backdropImageView);
         Glide.with(posterImageView)
-                .load(movie.getPosterRes())
+                .load(movie.getPoster())
                 .into(posterImageView);
         titleTextView.setText(movie.getTitle());
         overviewTextView.setText(movie.getOverview());
