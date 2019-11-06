@@ -1,23 +1,22 @@
 package com.android.academy.academy_minsk_movie.repository;
 
-import android.app.Application;
-
-import com.android.academy.academy_minsk_movie.data.db.MovieDao;
-import com.android.academy.academy_minsk_movie.data.db.MovieDatabase;
 import com.android.academy.academy_minsk_movie.data.model.Movie;
 import com.android.academy.academy_minsk_movie.network.api.TmdbServiceApi;
+import com.android.academy.academy_minsk_movie.repository.cache.MoviesCache;
 import com.android.academy.academy_minsk_movie.service.TmdbMapper;
 
 import java.util.List;
 
-public class MoviesRepository extends Application {
+public class MoviesRepository {
 
     private TmdbServiceApi tmdbServiceApi;
     private TmdbMapper tmdbMapper;
+    private MoviesCache cache;
 
-    MoviesRepository(TmdbServiceApi tmdbServiceApi, TmdbMapper tmdbMapper) {
+    public MoviesRepository(TmdbServiceApi tmdbServiceApi, TmdbMapper tmdbMapper, MoviesCache cache) {
         this.tmdbServiceApi = tmdbServiceApi;
         this.tmdbMapper = tmdbMapper;
+        this.cache = cache;
     }
 
     public List<Movie> getPopularMovies() {
@@ -25,10 +24,13 @@ public class MoviesRepository extends Application {
         return null;
     }
 
+    public String getMovieTrailerUrl(Movie movie) {
 
-    public void setMovieToDb() {
-        MovieDatabase db = MovieDatabase.getInstance(this);
-        MovieDao movieDao = db.movieDao();
+        return "";
+    }
+
+    public void deleteCachedData() {
+        cache.clearCache();
     }
 
 }

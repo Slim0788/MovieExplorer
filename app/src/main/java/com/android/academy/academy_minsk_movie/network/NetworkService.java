@@ -23,14 +23,13 @@ public class NetworkService {
     private static int pageNumber = 1;
 
     private Retrofit retrofit;
-    private OkHttpClient client;
 
     private NetworkService() {
         createClient();
         retrofit = new Retrofit.Builder()
                 .baseUrl(TMDB_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-//                .client(client)
+                .client(createClient())
                 .build();
     }
 
@@ -41,8 +40,8 @@ public class NetworkService {
         return instance;
     }
 
-    private void createClient() {
-        client = new OkHttpClient.Builder()
+    private OkHttpClient createClient() {
+        return new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @NotNull
                     @Override
@@ -62,7 +61,6 @@ public class NetworkService {
                         return chain.proceed(request);
                     }
                 }).build();
-        pageNumber++;
     }
 
     public TmdbServiceApi getJsonApi() {
