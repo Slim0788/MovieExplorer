@@ -14,7 +14,7 @@ public class TmdbMapper {
     private static final String BACKDROP_BASE_URL = "https://image.tmdb.org/t/p/w780";
     private static final String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
 
-    public static List<Movie> mapMovieList(PopularMovieDto popularMovieDto) {
+    public List<Movie> mapMovieList(PopularMovieDto popularMovieDto) {
         List<Movie> resultList = new ArrayList<>();
         for (MovieDto movieDto : popularMovieDto.getPopularMovieList()) {
             resultList.add(mapMovie(movieDto));
@@ -33,7 +33,7 @@ public class TmdbMapper {
         );
     }
 
-    public static String mapTrailerUrl(VideoUrlDto videoUrlDto) {
+    public String mapTrailerUrl(VideoUrlDto videoUrlDto) {
         return YOUTUBE_BASE_URL + videoUrlDto.getVideoUrlKey();
     }
 

@@ -33,14 +33,14 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Android
-    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-rc01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha01'
     implementation 'androidx.cardview:cardview:1.0.0'
 
     // Test
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
@@ -49,19 +49,19 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
 
     // Retrofit
-    def retrofit_version = '2.6.2'
+    def retrofit_version = '2.7.1'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 //    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
 
     // OkHttp-interceptor
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.0'
 
     // GSON
     implementation 'com.google.code.gson:gson:2.8.6'
 
     // Room
-    def room_version = "2.2.1"
+    def room_version = "2.2.3"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 //    implementation "androidx.room:room-rxjava2:$room_version"
